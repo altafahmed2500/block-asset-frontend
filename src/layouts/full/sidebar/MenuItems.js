@@ -24,19 +24,19 @@ const Menuitems = [
     id: uniqueId(),
     title: 'Assets',
     icon: IconBrandStripe,
-    href: '/ui/typography',
+    href: '/ui/assetcreation',
   },
   {
     id: uniqueId(),
     title: 'Transfer Assets',
     icon: IconTransfer,
-    href: '/ui/shadow',
+    href: '/ui/transferAssets',
   },
   {
     id: uniqueId(),
     title: 'Transaction',
     icon: IconBrandTabler,
-    href: '/ui/shadow',
+    href: '/ui/transactions',
   },
   {
     navlabel: true,

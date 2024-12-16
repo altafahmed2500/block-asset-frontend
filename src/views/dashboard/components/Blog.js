@@ -4,9 +4,9 @@ import { CardContent, Typography, Grid, Rating, Tooltip, Fab } from '@mui/materi
 import img1 from 'src/assets/images/products/s4.jpg';
 import img2 from 'src/assets/images/products/s5.jpg';
 import img3 from 'src/assets/images/products/s7.jpg';
-import img4 from 'src/assets/images/products/s11.jpg';
+import img4 from 'src/assets/images/products/s12.jpg';
 import { Stack } from '@mui/system';
-import { IconBasket } from '@tabler/icons-react';
+import { IconCoins } from '@tabler/icons-react';
 import BlankCard from '../../../components/shared/BlankCard';
 
 const ecoCard = [
@@ -53,13 +53,13 @@ const Blog = () => {
                         <Typography component={Link} to="/">
                             <img src={product.photo} alt="img" width="100%" />
                         </Typography>
-                        <Tooltip title="Add To Cart">
+                        <Tooltip title="your asset number">
                             <Fab
                                 size="small"
                                 color="primary"
                                 sx={{ bottom: '75px', right: '15px', position: 'absolute' }}
                             >
-                                <IconBasket size="16" />
+                                <IconCoins size="16" />
                             </Fab>
                         </Tooltip>
                         <CardContent sx={{ p: 3, pt: 2 }}>

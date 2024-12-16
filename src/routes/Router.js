@@ -2,6 +2,9 @@ import React, { lazy } from 'react';
 import { Navigate } from 'react-router-dom';
 import Loadable from '../layouts/full/shared/loadable/Loadable';
 import ProtectedRoute from '../components/ProtectedRoute';
+import Transactions from '../views/menulist/SamplePage';
+import AssetCreation from '../views/menulist/AssetCreation';
+import TransferAsset from '../views/menulist/TransferAsset';
 
 /* ***Layouts**** */
 const FullLayout = Loadable(lazy(() => import('../layouts/full/FullLayout')));
@@ -9,7 +12,7 @@ const BlankLayout = Loadable(lazy(() => import('../layouts/blank/BlankLayout')))
 
 /* ****Pages***** */
 const Dashboard = Loadable(lazy(() => import('../views/dashboard/Dashboard')));
-const SamplePage = Loadable(lazy(() => import('../views/sample-page/SamplePage')));
+const SamplePage = Loadable(lazy(() => import('../views/menulist/SamplePage')));
 const Icons = Loadable(lazy(() => import('../views/icons/Icons')));
 const TypographyPage = Loadable(lazy(() => import('../views/utilities/TypographyPage')));
 const Shadow = Loadable(lazy(() => import('../views/utilities/Shadow')));
@@ -62,13 +65,37 @@ const Router = [
           </ProtectedRoute>),
       },
       {
-        path: '/ui/shadow',
+        path: '/ui/assetcreation',
         exact: true,
         element: (
           <ProtectedRoute>
-            <Shadow />
+            <AssetCreation />
           </ProtectedRoute>),
       },
+      {
+        path: '/ui/transactions',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <Transactions />
+          </ProtectedRoute>),
+      },
+      {
+        path: '/ui/transferAssets',
+        exact: true,
+        element: (
+          <ProtectedRoute>
+            <TransferAsset />
+          </ProtectedRoute>),
+      },
+      // {
+      //   path: '/ui/shadow',
+      //   exact: true,
+      //   element: (
+      //     <ProtectedRoute>
+      //       <Shadow />
+      //     </ProtectedRoute>),
+      // },
       { path: '*', element: <Navigate to="/auth/404" /> },
     ],
   },

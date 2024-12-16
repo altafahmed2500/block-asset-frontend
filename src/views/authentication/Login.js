@@ -134,7 +134,7 @@ const Login2 = () => {
                 </Button>
                 <Stack direction="row" spacing={1} justifyContent="center">
                   <Typography color="textSecondary" variant="body2">
-                    New to Modernize?
+                    New to SubiAssets?
                   </Typography>
                   <Typography
                     component={Link}
