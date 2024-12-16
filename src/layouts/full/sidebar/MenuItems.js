@@ -62,14 +62,14 @@ const Menuitems = [
     id: uniqueId(),
     title: 'About Us',
     icon: IconUserCircle,
-    href: '/icons',
+    href: '/aboutus',
   },
-  {
-    id: uniqueId(),
-    title: 'Sample Page',
-    icon: IconAperture,
-    href: '/sample-page',
-  },
+  // {
+  //   id: uniqueId(),
+  //   title: 'About Us',
+  //   icon: IconAperture,
+  //   href: '/aboutus',
+  // },
 ];
 
 export default Menuitems;

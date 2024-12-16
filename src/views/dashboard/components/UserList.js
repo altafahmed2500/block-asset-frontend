@@ -10,7 +10,7 @@ import {
 } from '@mui/material';
 import DashboardCard from '../../../components/shared/DashboardCard';
 
-const ProductPerformance = () => {
+const UserList = () => {
     const [users, setUsers] = useState([]);
     const [error, setError] = useState(null);
 
@@ -100,4 +100,4 @@ const ProductPerformance = () => {
     );
 };
 
-export default ProductPerformance;
+export default UserList;

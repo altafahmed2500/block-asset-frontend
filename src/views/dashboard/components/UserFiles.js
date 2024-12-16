@@ -10,6 +10,7 @@ import {
     DialogContent,
     DialogActions,
     Button,
+    TextField,
 } from '@mui/material';
 import { Stack } from '@mui/system';
 import { IconFile } from '@tabler/icons-react';
@@ -23,6 +24,7 @@ const UserFiles = () => {
     const [error, setError] = useState(null);
     const [open, setOpen] = useState(false);
     const [selectedFile, setSelectedFile] = useState(null);
+    const [assetName, setAssetName] = useState(''); // State for asset name input
     const [message, setMessage] = useState('');
     const [isUpdating, setIsUpdating] = useState(false);
 
@@ -57,17 +59,22 @@ const UserFiles = () => {
 
     const handleOpen = (file) => {
         setSelectedFile(file);
+        setAssetName(''); // Clear the input when opening the dialog
         setOpen(true);
     };
 
     const handleClose = () => {
         setOpen(false);
         setSelectedFile(null);
+        setAssetName('');
         setMessage('');
     };
 
     const handleUpdateAndCreateAsset = async () => {
-        if (!selectedFile) return;
+        if (!selectedFile || !assetName) {
+            setMessage('Asset name is required.');
+            return;
+        }
         setIsUpdating(true);
 
         try {
@@ -81,7 +88,7 @@ const UserFiles = () => {
                 'http://127.0.0.1:8000/api/assets/updateuploadcreate',
                 {
                     file_id: selectedFile.file_id,
-                    name: selectedFile.file_metadata.file_name, // Assuming asset name is file name
+                    name: assetName, // Use the entered asset name
                 },
                 {
                     headers: {
@@ -119,15 +126,17 @@ const UserFiles = () => {
                                 <Fab
                                     size="large"
                                     sx={{
+                                        p: 4, // Increased padding for above and below
+                                        textAlign: 'center',
                                         backgroundColor: colorPalette[index % colorPalette.length],
-                                        margin: '1px',
-                                        color: 'white',
-                                        width: '100%',
-                                        height: '150px',
-                                        display: 'flex',
-                                        justifyContent: 'center',
-                                        alignItems: 'center',
-                                        cursor: 'pointer',
+                                        // Cycle through colors
+                                        display: 'flex', // Use flexbox for centering
+                                        flexDirection: 'column', // Arrange content in a column
+                                        justifyContent: 'center', // Center content vertically
+                                        alignItems: 'center', // Center content horizontally
+                                        margin: '20px auto', // Center horizontally and add vertical spacing
+                                        maxWidth: '300px', // Set a max width for consistent margins
+                                        borderRadius: '8px', // Optional: Add rounded corners for a cleaner look
                                     }}
                                     onClick={() => handleOpen(file)}
                                 >
@@ -162,8 +171,18 @@ const UserFiles = () => {
                 <DialogTitle>Update and Create Asset</DialogTitle>
                 <DialogContent>
                     <Typography>
-                        Are you sure you want to update the metadata and upload the file to IPFS?
+                        Enter the asset name and confirm to update the metadata and upload the file to IPFS.
                     </Typography>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        label="Asset Name"
+                        type="text"
+                        fullWidth
+                        value={assetName}
+                        onChange={(e) => setAssetName(e.target.value)}
+                        sx={{ mt: 2 }}
+                    />
                     {message && (
                         <Typography
                             color={message.includes('successfully') ? 'success.main' : 'error'}
@@ -177,7 +196,7 @@ const UserFiles = () => {
                     <Button onClick={handleClose} color="secondary">
                         Cancel
                     </Button>
-                    <Button onClick={handleUpdateAndCreateAsset} color="primary" disabled={isUpdating || !selectedFile}>
+                    <Button onClick={handleUpdateAndCreateAsset} color="primary" disabled={isUpdating || !assetName}>
                         {isUpdating ? 'Updating...' : 'Update and Create'}
                     </Button>
                 </DialogActions>

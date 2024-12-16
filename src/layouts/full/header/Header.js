@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, AppBar, Toolbar, styled, Stack, IconButton, Badge, Button } from '@mui/material';
 import PropTypes from 'prop-types';
-
+import { Link } from 'react-router-dom';
 // components
 import Profile from './Profile';
 import { IconBellRinging, IconMenu } from '@tabler/icons-react';
@@ -63,7 +63,12 @@ const Header = (props) => {
         </IconButton>
         <Box flexGrow={1} />
         <Stack spacing={1} direction="row" alignItems="center">
-          <Button variant="contained" color="primary" target="_blank" href="https://www.google.co.in/">
+          <Button
+            variant="contained"
+            color="primary"
+            component={Link}
+            to="/ui/contact-admin"
+          >
             Contact Admin
           </Button>
           <Profile />
