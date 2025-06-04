@@ -17,7 +17,6 @@
     "@mui/system": "^5.14.11",
     "@svgr/rollup": "^8.1.0",
     "@tabler/icons-react": "^2.35.0",
-    "axios": "^1.7.8",
     "lodash": "^4.17.21",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -26,7 +25,8 @@
     "react-helmet": "^6.1.0",
     "react-mui-sidebar": "^1.2.7",
     "react-router": "^6.16.0",
-    "react-router-dom": "^6.16.0"
+    "react-router-dom": "^6.16.0",
+    "axios": "^1.8.2"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
